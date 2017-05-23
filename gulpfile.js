@@ -45,6 +45,13 @@ gulp.task('server:watch', function () {
     gulp.watch( [ './server.js' ], server.restart );
 });
 
+gulp.task('vendors:install', function() {
+    return gulp.src([
+        './node_modules/foundation-grid/grid.css'
+      ])
+      .pipe(gulp.dest('./dist'));
+});
+
 gulp.task('default', function () {
-  gulp.start('sass', 'sass:watch', 'js', 'js:watch', 'server', 'server:watch');
+  gulp.start('vendors:install', 'sass', 'sass:watch', 'js', 'js:watch', 'server', 'server:watch');
 });
