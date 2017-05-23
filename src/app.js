@@ -1,5 +1,20 @@
-import React from 'react';
-import { render } from 'react-dom';
-import VehicleList from './components/VehicleList';
+import { getData } from './api/index.js';
+import { apiVehicleUrl } from './constants.js';
 
-render(<VehicleList />, document.getElementById('app'));
+getData(apiVehicleUrl).then(res => {
+	const vehicles = JSON.parse(res).vehicles;
+
+	return vehicles.reduce((promise, vehicle) => {
+		return promise.then(() => {
+			console.log(vehicle);
+		}).then(() => {
+			getData(`${apiVehicleUrl}/${vehicle.id}`).then(res => {
+				// Add to page
+				console.log(JSON.parse(res));
+			});
+		})
+	}, Promise.resolve());
+});
+
+
+getData();

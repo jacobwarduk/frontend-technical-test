@@ -1,19 +1,18 @@
-/**
-* This is an example request. Create your own using best practises for
-* handling asynchronous data fetching
-**/
+export const getData = url => {
+	return new Promise((resolve, reject) => {
+		const req = new XMLHttpRequest();
+		req.open('GET', url);
 
-export const getData = (cb) => {
-    const vehicles = new XMLHttpRequest();
-    vehicles.open('GET', 'http://localhost:9988/api/vehicle');
+		req.onload = () => {
+			req.status === 200 ? resolve(req.responseText) : reject(Error('Unsuccessful response from the server.'));
+		};
 
-    vehicles.onreadystatechange = function() {
-        if(vehicles.readyState === 4) {
- 		    if(vehicles.status === 200) {
- 			    cb(vehicles.responseText);
-		    }
-		}
-	};
+		req.onerror = () => reject(Error('There was a network error.'));
 
-	vehicles.send();
+		req.send();
+	});
+};
+
+export const addItem = item => {
+
 };
