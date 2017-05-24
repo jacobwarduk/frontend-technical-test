@@ -1,6 +1,93 @@
-$bg-colour: #E6E8EB;
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+$bg-colour: #F9F9F9;
+$bg-colour-vehicle-card-front: #FFFFFF;
+$bg-colour-vehicle-card-back: #000000;
+$text-colour-vehicle-card-back: #FFFFFF;
+$text-colour-vehicle-card-front: #303030;
+
+$gutter: 15px;
+$gutter-third: ($gutter / 3);
+$margin: 15px;
+$margin-third: ($margin / 3);
 
 body {
 	background-color: $bg-colour;
+	font-family: 'Raleway', sans-serif;
 }
 
+.row {
+	max-width: 100rem;
+}
+
+.vehicle-card {
+	position: relative;
+	margin: $margin 0;
+
+	&:hover,
+	&:focus {
+		.vehicle-card--back {
+			opacity: .8;
+			transition: all linear .3s;
+		}
+	}
+}
+
+.vehicle-card--front {
+	color: $text-colour-vehicle-card-front;
+	background: $bg-colour-vehicle-card-front;
+	box-shadow: 0px 0px 5px 1px rgba(194,194,194,0.1);
+}
+
+.vehicle-card__img {
+	max-width: 100%;
+}
+
+.vehicle-card__content {
+	padding: $gutter;
+	text-align: center;
+}
+
+.vehicle-card__name span {
+	text-transform: uppercase;
+	border-width: 2px 0;
+	border-color: $text-colour-vehicle-card-front;
+	border-style: solid;
+	padding: 10px;
+}
+
+.vehicle-card__price {
+	padding: $gutter 0;
+}
+
+.vehicle-card--back {
+	color: $text-colour-vehicle-card-back;
+	background-color: $bg-colour-vehicle-card-back;
+	margin: 0 $margin;
+	padding: $gutter;
+	overflow: scroll;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	transition: all linear .3s;
+}
+
+.overview-list {
+	padding-left: 0;
+	margin-top: $margin-third;
+	list-style-type: none;
+}
+
+.overview-list__item {
+	font-size: .8rem
+}
+
+.vehicle-card--back {
+	.vehicle-card__title {
+		padding: $gutter-third;
+		border-bottom: 1px solid $text-colour-vehicle-card-back;
+	}
+}

@@ -3,36 +3,31 @@ import { apiVehicleUrl } from './constants';
 //import { mustache } from '../node_modules/mustache/mustache.js';
 const Mustache = require('mustache');
 
+getData(apiVehicleUrl).then(res => {
+	const vehicles = JSON.parse(res).vehicles;
+	return vehicles.reduce((promise, vehicle) => {
+		return promise.then(Function.prototype).then(() => {
+			getData(`${apiVehicleUrl}/${vehicle.id}`).then(res => {
 
+				const vehicleData = {};
 
-(() => {
-	getData(apiVehicleUrl).then(res => {
-		const vehicles = JSON.parse(res).vehicles;
-		return vehicles.reduce((promise, vehicle) => {
-			return promise.then(Function.prototype).then(() => {
-				getData(`${apiVehicleUrl}/${vehicle.id}`).then(res => {
+				Object.assign(vehicleData, vehicle, JSON.parse(res));
 
-					const vehicleData = {};
+				vehicleData.meta.emissions.output = vehicleData.meta.emissions.template.replace('$value', vehicleData.meta.emissions.value);
 
-					Object.assign(vehicleData, vehicle, JSON.parse(res));
-					console.log(vehicleData);
+				getData('./components/vehicle-card.html').then(template => {
+					const vehicleCard = Mustache.render(template, vehicleData);
 
-					getData('./components/vehicle-card.html').then(template => {
-						const vehicleCard = Mustache.render(template, vehicleData);
+					const card = document.createElement('div');
+					card.innerHTML = vehicleCard;
 
-						const card = document.createElement('div');
-
-						console.log(card);
-						card.innerHTML = vehicleCard;
-
-						const container = document.getElementById('container');
-						container.appendChild(card);
-
-					});
+					const container = document.getElementById('container');
+					container.appendChild(card);
 
 				});
-			})
-		}, Promise.resolve());
-	});
-})();
+
+			});
+		})
+	}, Promise.resolve());
+});
 

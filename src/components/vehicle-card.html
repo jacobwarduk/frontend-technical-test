@@ -3,37 +3,40 @@
     <div class="vehicle-card--front">
         <img class="vehicle-card__img" src="{{ #media }} {{ [0] }} {{ url }} {{ /media }}" alt="{{ #media }} {{ [0] }} {{ name }} {{ /media }}" />
         <div class="vehicle-card__content">
-            <header class="vehicle-card__name">{{ #media }} {{ [0] }} {{ name }} {{ /media }}</header>
+            <header class="vehicle-card__name"><h2><span>{{ #media }} {{ [0] }} {{ name }} {{ /media }}</span></h2></header>
             <p class="vehicle-card__price">From {{ price }}</p>
             <p class="vehicle-card__description">{{ description }}</p>
         </div>
     </div>
 
     <div class="vehicle-card--back">
-        {{ #meta.bodystyles }}
+        <div class="vehicle-card__content">
+            <h3 class="vehicle-card__title">Details</h3>
+
+            <section class="vehicle-card__passengers">
+                <p><b>Passengers</b>: {{ meta.passengers }}</p>
+            </section>
+
             <section class="vehicle-card__body-styles">
-                <ul>
-                    <li>{{ . }}</li>
+                <b>Body Styles</b>
+                <ul class="overview-list">
+                    {{ #meta.bodystyles }}<li class="overview-list__item">{{ . }}</li>{{ /meta.bodystyles }}
                 </ul>
             </section>
-        {{ /meta.bodystyles }}
 
-        {{ #meta.drivetrain }}
             <section class="vehicle-card__drive-train">
-                <ul>
-                    <li>{{ . }}</li>
+                <b>Drive Train</b>
+                <ul class="overview-list">
+                    {{ #meta.drivetrain }}
+                        <li class="overview-list__item">{{ . }}</li>
+                    {{ /meta.drivetrain }}
                 </ul>
             </section>
-        {{ /meta.drivetrain }}
 
-
-        <section class="vehicle-card__emissions">
-            Emissions:
-        </section>
-
-        <section class="vehicle-card__passengers">
-            Passengers: {{ meta.passengers }}
-        </section>
+            <section class="vehicle-card__emissions">
+                <p>{{ meta.emissions.output }}</p>
+            </section>
+        </div>
     </div>
 
 </article>

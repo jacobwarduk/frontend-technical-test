@@ -109,6 +109,3 @@ gulp.task('default', function (done) {
 		}
 	)
 });
-
-
-	//gulp.start('clean:dist', 'vendor:install:scripts', 'vendor:install:styles', 'sass', 'sass:watch', 'js', 'js:watch', 'server', 'server:watch');});
