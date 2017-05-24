@@ -12,7 +12,3 @@ export const getData = url => {
 		req.send();
 	});
 };
-
-export const addItem = item => {
-
-};
