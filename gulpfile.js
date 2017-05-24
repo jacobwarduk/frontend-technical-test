@@ -50,10 +50,10 @@ gulp.task('server:watch', function () {
 });
 
 gulp.task('vendor:install:scripts', function() {
-	return browserify({entries: './node_modules/vue/dist/vue.min.js', extensions: ['.js'], debug: true})
+	return browserify({entries: './node_modules/mustache/mustache.js', extensions: ['.js'], debug: true})
 		.transform('babelify', {presets: ['es2015']})
 		.bundle()
-		.pipe(source('vue.min.js'))
+		.pipe(source('mustache.js'))
 		.pipe(gulp.dest('./dist/scripts'));
 });
 
@@ -62,6 +62,20 @@ gulp.task('vendor:install:styles', function () {
         './node_modules/foundation-grid/grid.css'
       ])
 		.pipe(gulp.dest('./dist/styles'));
+});
+
+gulp.task('app:install:components', function () {
+	return gulp.src([
+      './src/components/*'
+    ])
+		.pipe(gulp.dest('./dist/components/'));
+});
+
+gulp.task('app:install:images', function() {
+	return gulp.src([
+	    './images/*'
+	  ])
+		.pipe(gulp.dest('./dist/images/'));
 });
 
 gulp.task('clean:dist', function (done) {
@@ -76,7 +90,9 @@ gulp.task('default', function (done) {
 		'clean:dist',
 		[
 			'vendor:install:scripts',
-			'vendor:install:styles'
+			'vendor:install:styles',
+		  'app:install:components',
+		  'app:install:images'
 		],
 		[
 			'sass',

@@ -1,0 +1,39 @@
+<article class="small-12 medium-6 large-3 columns vehicle-card" id="vehicle-{{ id }}">
+
+    <div class="vehicle-card--front">
+        <img class="vehicle-card__img" src="{{ #media }} {{ [0] }} {{ url }} {{ /media }}" alt="{{ #media }} {{ [0] }} {{ name }} {{ /media }}" />
+        <div class="vehicle-card__content">
+            <header class="vehicle-card__name">{{ #media }} {{ [0] }} {{ name }} {{ /media }}</header>
+            <p class="vehicle-card__price">From {{ price }}</p>
+            <p class="vehicle-card__description">{{ description }}</p>
+        </div>
+    </div>
+
+    <div class="vehicle-card--back">
+        {{ #meta.bodystyles }}
+            <section class="vehicle-card__body-styles">
+                <ul>
+                    <li>{{ . }}</li>
+                </ul>
+            </section>
+        {{ /meta.bodystyles }}
+
+        {{ #meta.drivetrain }}
+            <section class="vehicle-card__drive-train">
+                <ul>
+                    <li>{{ . }}</li>
+                </ul>
+            </section>
+        {{ /meta.drivetrain }}
+
+
+        <section class="vehicle-card__emissions">
+            Emissions:
+        </section>
+
+        <section class="vehicle-card__passengers">
+            Passengers: {{ meta.passengers }}
+        </section>
+    </div>
+
+</article>
