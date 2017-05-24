@@ -1,25 +1,14 @@
-import { getData } from './api/index.js';
-import { apiVehicleUrl } from './constants.js';
-
+import { getData } from './api/index';
+import { apiVehicleUrl } from './constants';
+import { render } from './components/render';
 
 getData(apiVehicleUrl).then(res => {
 	const vehicles = JSON.parse(res).vehicles;
-
-
-	console.log(vehicles);
-
-
 	return vehicles.reduce((promise, vehicle) => {
-		return promise.then(() => {
-
-
-			console.log(vehicle);
-
-
-		}).then(() => {
+		return promise.then(Function.prototype).then(() => {
 			getData(`${apiVehicleUrl}/${vehicle.id}`).then(res => {
-				// Add to page
-				console.log(JSON.parse(res));
+				let meta = JSON.parse(res);
+				render(vehicle, meta);
 			});
 		})
 	}, Promise.resolve());

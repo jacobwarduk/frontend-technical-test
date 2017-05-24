@@ -50,10 +50,10 @@ gulp.task('server:watch', function () {
 });
 
 gulp.task('vendor:install:scripts', function() {
-	return browserify({entries: './node_modules/vue/dist/vue.esm.js', extensions: ['.js'], debug: true})
+	return browserify({entries: './node_modules/vue/dist/vue.min.js', extensions: ['.js'], debug: true})
 		.transform('babelify', {presets: ['es2015']})
 		.bundle()
-		.pipe(source('vue.esm.js'))
+		.pipe(source('vue.min.js'))
 		.pipe(gulp.dest('./dist/scripts'));
 });
 
@@ -76,7 +76,9 @@ gulp.task('default', function (done) {
 		'clean:dist',
 		[
 			'vendor:install:scripts',
-			'vendor:install:styles',
+			'vendor:install:styles'
+		],
+		[
 			'sass',
 			'js'
 		],
