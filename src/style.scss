@@ -5,11 +5,18 @@ $bg-colour-vehicle-card-front: #FFFFFF;
 $bg-colour-vehicle-card-back: #000000;
 $text-colour-vehicle-card-back: #FFFFFF;
 $text-colour-vehicle-card-front: #303030;
+$text-colour-btn: #FFFFFF;
+$border-colour-btn: #FFFFFF;
+$hover-border-colour-btn: #000000;
+$hover-bg-colour-btn: #FFFFFF;
+$hover-colour-btn: #303030;
 
 $gutter: 15px;
 $gutter-third: ($gutter / 3);
+$gutter-double: ($gutter * 2);
 $margin: 15px;
 $margin-third: ($margin / 3);
+$margin-double: ($margin * 2);
 
 body {
 	background-color: $bg-colour;
@@ -89,5 +96,30 @@ body {
 	.vehicle-card__title {
 		padding: $gutter-third;
 		border-bottom: 1px solid $text-colour-vehicle-card-back;
+	}
+}
+
+.vehicle-card__buy-now {
+	margin-top: $margin-double;
+}
+
+.vehicle-card__btn {
+	font-size: 1rem;
+	border: 1px solid $border-colour-btn;
+	color: $text-colour-btn;
+	padding: $gutter $gutter-double;
+	margin-top: $margin-double;
+	background-color: none;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+	transition: all ease .3s;
+
+	&:hover,
+	&:active {
+		background-color: $hover-bg-colour-btn;
+		color: $hover-colour-btn;
+		border-color: $hover-border-colour-btn;
+		transition: all ease .3s;
 	}
 }
