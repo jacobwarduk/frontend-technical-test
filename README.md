@@ -1,3 +1,12 @@
+#### [@jacobwarduk](https://github.com/jacobwarduk)
+> **Note: ** Due to situations beyond my control, I've only been able to work on this for a small amount of time in bits and pieces.
+>
+> **Requires: ** Code to be modularised. Unit tests.
+>
+> I have other repos where you can see examples of unit tests I have written, or you can have a look at my contributions to the [Jasmine Matchers](https://github.com/JamieMason/Jasmine-Matchers) test assertion library.
+
+---
+
 Frontend Technical Test for Connect Group [www.connect-group.com](http://www.connect-group.com/)
 
 #### Requirements
