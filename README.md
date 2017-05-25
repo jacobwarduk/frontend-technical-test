@@ -1,9 +1,14 @@
 #### [@jacobwarduk](https://github.com/jacobwarduk)
-> **Note: ** Due to situations beyond my control, I've only been able to work on this for a small amount of time in bits and pieces.
+> **Notes:** Due to situations beyond my control, I've only been able to work on this for a small amount of time in bits and pieces.
 >
-> **Requires: ** Code to be modularised. Unit tests.
+> **Requires:** 
+>1. Code to be modularised. 
+>1. Unit tests. 
+>3. Better styling.
 >
-> I have other repos where you can see examples of unit tests I have written, or you can have a look at my contributions to the [Jasmine Matchers](https://github.com/JamieMason/Jasmine-Matchers) test assertion library.
+> **Examples:** 
+> * _Testing:_ Look at my contributions to the [Jasmine Matchers](https://github.com/JamieMason/Jasmine-Matchers) test assertion library or checkout some of my other code.
+> * _Styling:_ Look at my past projects, such as [RAC UK Breakdown Journey](https://www.rac.co.uk/breakdown-cover/uk-breakdown-new) or Osborne Clarke's satellite sites [Smart Cities](http://smartcities.osborneclarke.com/), [Connected Consumer](http://connectedconsumer.osborneclarke.com/), or [Marketing Law](http://marketinglaw.osborneclarke.com/) 
 
 ---
 
